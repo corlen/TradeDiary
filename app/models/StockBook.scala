@@ -1,3 +1,15 @@
 package models
 
-case class StockBook(id: Long, name: String, description: String)
+import anorm.{NotAssigned, Pk}
+
+case class StockBook(
+                      id: Pk[Long] = NotAssigned,
+                      name: String,
+                      description: String,
+                      color: String )
+
+object StockBook {
+
+  def all(): List[StockBook] = Nil
+
+}

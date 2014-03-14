@@ -1,23 +1,20 @@
 package models
 
-import org.joda.time.DateTime
+import java.util.{Date}
+import anorm.{NotAssigned, Pk}
 
-case class TradeLog(id: Long,
+case class TradeLog(id: Pk[Long] = NotAssigned,
                     stockName: String,
-                    entryDate: DateTime,
+                    entryDate: Date,
                     entryQuote: Double,
-                    Quantity: Int,
-                    exitDate: DateTime,
-                    exitQuote: Double,
-                    buyOrderFee: Double,
-                    stockBookId: Long)
+                    quantity: Int,
+                    exitDate: Option[Date],
+                    exitQuote: Option[Double],
+                    stockBookId: Long,
+                    stockBrokerId: Long )
 
 object TradeLog {
 
   def all(): List[TradeLog] = Nil
-
-  def create(stockName: String, entryDate: DateTime, entryQuote: Double, Quantity: Int, exitDate: DateTime, exitQuote: Double, buyOrderFee: Double, groupLabel: String) {}
-
-  def delete(id: Long) {}
 
 }

@@ -10,5 +10,3 @@ GET     /assets/*file               controllers.Assets.at(path="/public", file)
 
 # Trade Logs
 GET     /tradelogs                  controllers.Application.tradeLogs
-POST    /tradelogs                  controllers.Application.newTradeLog
-POST    /tradelogs/:id/delete       controllers.Application.deleteTradeLog(id: Long)
