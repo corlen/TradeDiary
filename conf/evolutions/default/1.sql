@@ -23,18 +23,17 @@ CREATE TABLE trade_log
    id bigint NOT NULL,
    stock_name character varying(255) NOT NULL,
    entry_date date NOT NULL,
+   entry_quote numeric,
    quantity bigint NOT NULL,
    exit_date date,
-   exit_quote date,
+   exit_quote numeric,
    stock_book_id bigint,
    stock_broker_id bigint,
    CONSTRAINT trade_log_pkey PRIMARY KEY (id)
 );
 
 CREATE SEQUENCE stock_book_sequence start with 1;
-
 CREATE SEQUENCE stock_broker_sequence start with 1;
-
 CREATE SEQUENCE trade_log_sequence start with 1;
 
 alter table trade_log
@@ -52,7 +51,9 @@ alter table trade_log
 # --- !Downs
 
 drop table if exists stock_book;
-
 drop table if exists stock_broker;
-
 drop table if exists trade_log;
+
+drop sequence if exists stock_book_sequence;
+drop sequence if exists stock_broker_sequence;
+drop sequence if exists trade_log_sequence;
