@@ -6,6 +6,8 @@ CREATE TABLE stock_book
 (
   id bigint NOT NULL,
   name varchar(255) NOT NULL,
+  description varchar(255),
+  color varchar(255),
   CONSTRAINT stock_book_pkey PRIMARY KEY (id)
 );
 

@@ -1,0 +1,17 @@
+@(stockBooks: List[StockBook])
+
+@import helper._
+
+@main("Stock Books") {
+
+    <h1>Stock Books</h1>
+
+    <ul>
+        @stockBooks.map { stockBook =>
+        <li>
+            @stockBook.id - @stockBook.name - @stockBook.description - @stockBook.color
+        </li>
+        }
+    </ul>
+
+}

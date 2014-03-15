@@ -9,4 +9,7 @@ GET     /                           controllers.Application.index
 GET     /assets/*file               controllers.Assets.at(path="/public", file)
 
 # Trade Logs
-GET     /tradelogs                  controllers.Application.tradeLogs
+#GET     /tradelogs                  controllers.Application.tradeLogs
+
+# Stock Books
+GET     /stockbooks                 controllers.Application.stockBooks

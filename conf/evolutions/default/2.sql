@@ -2,7 +2,7 @@
 # --- !Ups
 
 insert into stock_broker (id, name, odd_lot_market_fee, default_lot_market_fee) values (1, 'Ativa Trade', 4.40, 15);
-insert into stock_book (id, name) values (1, 'Carteira de Dividendos');
+insert into stock_book (id, name, description, color) values (1, 'Carteira de Dividendos', 'Blablablablabla blablalbalbl', '#FFFFFF');
 
 insert into trade_log (id, stock_name, entry_date, entry_quote, quantity, exit_date, exit_quote, stock_book_id, stock_broker_id) values (1, 'PETR4F', '2013-08-10 00:00:00.000', 13.56, 25, null, null, 1, 1);
 insert into trade_log (id, stock_name, entry_date, entry_quote, quantity, exit_date, exit_quote, stock_book_id, stock_broker_id) values (2, 'PETR4F', '2013-09-23 00:00:00.000', 14.45, 13, null, null, 1, 1);
