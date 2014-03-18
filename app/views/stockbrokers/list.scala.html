@@ -1,0 +1,17 @@
+@(stockBrokers: List[StockBroker])
+
+@import helper._
+
+@main("Stock Brokers") {
+
+    <h1>Stock Brokers</h1>
+
+    <ul>
+        @stockBrokers.map { stockBroker =>
+        <li>
+            @stockBroker.id - @stockBroker.name - @stockBroker.oddLotMarketFee - @stockBroker.defaultLotMarketFee
+        </li>
+        }
+    </ul>
+
+}

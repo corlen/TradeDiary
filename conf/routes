@@ -13,3 +13,6 @@ GET     /assets/*file               controllers.Assets.at(path="/public", file)
 
 # Stock Books
 GET     /stockbooks                 controllers.Application.stockBooks
+
+# Stock Brokers
+GET     /stockbrokers                 controllers.Application.stockBrokers
