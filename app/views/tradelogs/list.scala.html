@@ -1,0 +1,18 @@
+@(tradeLogs: List[TradeLog])
+
+@import helper._
+
+@main("Trade Logs") {
+
+    <h1>Trade Logs</h1>
+
+    <ul>
+        @tradeLogs.map { tradeLog =>
+        <li>
+            @tradeLog.id - @tradeLog.stockName - @tradeLog.entryDate - @tradeLog.entryQuote - @tradeLog.quantity
+            - @tradeLog.exitDate - @tradeLog.exitQuote - @tradeLog.stockBookId - @tradeLog.stockBrokerId
+        </li>
+        }
+    </ul>
+
+}

@@ -25,12 +25,12 @@ CREATE TABLE trade_log
    id bigint NOT NULL,
    stock_name character varying(255) NOT NULL,
    entry_date date NOT NULL,
-   entry_quote numeric,
+   entry_quote numeric NOT NULL,
    quantity bigint NOT NULL,
    exit_date date,
    exit_quote numeric,
-   stock_book_id bigint,
-   stock_broker_id bigint,
+   stock_book_id bigint NOT NULL,
+   stock_broker_id bigint NOT NULL,
    CONSTRAINT trade_log_pkey PRIMARY KEY (id)
 );
 

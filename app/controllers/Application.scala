@@ -1,8 +1,11 @@
 package controllers
 
 import play.api.mvc._
-import models.StockBook
 import models.StockBroker
+import models.StockBook
+import models.TradeLog
+
+
 
 object Application extends Controller {
 
@@ -11,11 +14,15 @@ object Application extends Controller {
   }
 
   def stockBooks = Action {
-    Ok(views.html.stockbooks.index(StockBook.all()))
+    Ok(views.html.stockbooks.list(StockBook.all()))
   }
 
   def stockBrokers = Action {
     Ok(views.html.stockbrokers.list(StockBroker.all()))
+  }
+
+  def tradeLogs = Action {
+    Ok(views.html.tradelogs.list(TradeLog.all()))
   }
 
 }
