@@ -6,13 +6,33 @@
 
     <h1>Trade Logs</h1>
 
-    <ul>
-        @tradeLogs.map { tradeLog =>
-        <li>
-            @tradeLog.id - @tradeLog.stockName - @tradeLog.entryDate - @tradeLog.entryQuote - @tradeLog.quantity
-            - @tradeLog.exitDate - @tradeLog.exitQuote - @tradeLog.stockBookId - @tradeLog.stockBrokerId
-        </li>
-        }
-    </ul>
 
+    <table class="table table-condensed">
+        <thead>
+        <tr>
+            <th>#</th>
+            <th>Stock</th>
+            <th>Entry Date</th>
+            <th>Entry Quote</th>
+            <th>Quantity</th>
+            <th>Exit Date</th>
+            <th>Exit Quote</th>
+            <th>Stock Book</th>
+            <th>Stock Broker</th>
+        </tr>
+        </thead>
+        @tradeLogs.map { tradeLog =>
+        <tr>
+            <td>@tradeLog.id</td>
+            <td>@tradeLog.stockName</td>
+            <td>@tradeLog.entryDate</td>
+            <td>@tradeLog.entryQuote</td>
+            <td>@tradeLog.quantity</td>
+            <td>@tradeLog.exitDate</td>
+            <td>@tradeLog.exitQuote</td>
+            <td>@tradeLog.stockBookId</td>
+            <td>@tradeLog.stockBrokerId</td>
+        </tr>
+        }
+    </table>
 }

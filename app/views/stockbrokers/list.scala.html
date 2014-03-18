@@ -6,12 +6,23 @@
 
     <h1>Stock Brokers</h1>
 
-    <ul>
-        @stockBrokers.map { stockBroker =>
-        <li>
-            @stockBroker.id - @stockBroker.name - @stockBroker.oddLotMarketFee - @stockBroker.defaultLotMarketFee
-        </li>
-        }
-    </ul>
 
+<table class="table table-condensed">
+    <thead>
+    <tr>
+        <th>#</th>
+        <th>Name</th>
+        <th>Odd Lot Fee</th>
+        <th>Default Lot Fee</th>
+    </tr>
+    </thead>
+    @stockBrokers.map { stockBroker =>
+    <tr>
+        <td>@stockBroker.id</td>
+        <td>@stockBroker.name</td>
+        <td>@stockBroker.oddLotMarketFee</td>
+        <td>@stockBroker.defaultLotMarketFee</td>
+    </tr>
+    }
+</table>
 }

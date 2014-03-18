@@ -6,12 +6,23 @@
 
     <h1>Stock Books</h1>
 
-    <ul>
+    <table class="table table-condensed">
+        <thead>
+        <tr>
+            <th>#</th>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Color</th>
+        </tr>
+        </thead>
         @stockBooks.map { stockBook =>
-        <li>
-            @stockBook.id - @stockBook.name - @stockBook.description - @stockBook.color
-        </li>
+        <tr>
+            <td>@stockBook.id</td>
+            <td>@stockBook.name</td>
+            <td>@stockBook.description</td>
+            <td>@stockBook.color</td>
+        </tr>
         }
-    </ul>
+    </table>
 
 }
