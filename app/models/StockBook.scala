@@ -13,7 +13,7 @@ case class StockBook(
 
 object StockBook {
 
-  val stockBook = {
+  val stockBookParser = {
     get[Pk[Long]]("id") ~
     get[String]("name") ~
     get[String]("description") ~
@@ -23,7 +23,7 @@ object StockBook {
   }
 
   def all(): List[StockBook] = DB.withConnection { implicit c =>
-    SQL("select * from stock_book").as(stockBook *)
+    SQL("select * from stock_book").as(stockBookParser *)
   }
 
 }

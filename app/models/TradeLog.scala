@@ -20,7 +20,7 @@ case class TradeLog(id: Pk[Long] = NotAssigned,
 
 object TradeLog {
 
-  val tradeLog = {
+  val tradeLogParser = {
       get[Pk[Long]]("trade_log.id") ~
       get[String]("trade_log.stock_name") ~
       get[Date]("trade_log.entry_date") ~
@@ -36,7 +36,7 @@ object TradeLog {
   }
 
   def all(): List[TradeLog] = DB.withConnection { implicit c =>
-    SQL("select * from trade_log").as(tradeLog *)
+    SQL("select * from trade_log").as(tradeLogParser *)
   }
 
 }

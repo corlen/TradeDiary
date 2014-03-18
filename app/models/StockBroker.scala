@@ -13,7 +13,7 @@ case class StockBroker(
 
 object StockBroker {
 
-  val stockBroker = {
+  val stockBrokerParser = {
     get[Pk[Long]]("id") ~
       get[String]("name") ~
       get[java.math.BigDecimal]("odd_lot_market_fee") ~
@@ -23,7 +23,7 @@ object StockBroker {
   }
 
   def all(): List[StockBroker] = DB.withConnection { implicit c =>
-    SQL("select * from stock_broker").as(stockBroker *)
+    SQL("select * from stock_broker").as(stockBrokerParser *)
   }
 
 }
