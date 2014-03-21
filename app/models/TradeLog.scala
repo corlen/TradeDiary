@@ -16,7 +16,9 @@ case class TradeLog(id: Pk[Long] = NotAssigned,
                     exitDate: Option[Date],
                     exitQuote: Option[java.math.BigDecimal],
                     stockBookId: Long,
-                    stockBrokerId: Long )
+                    stockBrokerId: Long,
+                    stockBookName: String,
+                    stockBrokerName: String)
 
 object TradeLog {
 
@@ -29,14 +31,20 @@ object TradeLog {
       get[Option[Date]]("trade_log.exit_date") ~
       get[Option[java.math.BigDecimal]]("trade_log.exit_quote") ~
       get[Long]("trade_log.stock_book_id") ~
-      get[Long]("trade_log.stock_broker_id")  map {
-      case id ~ stockName ~ entryDate ~ entryQuote ~ quantity ~ exitDate ~ exitQuote ~ stockBookId ~ stockBrokerId =>
-        TradeLog(id, stockName, entryDate, entryQuote, quantity, exitDate, exitQuote, stockBookId, stockBrokerId)
+      get[Long]("trade_log.stock_broker_id") ~
+      get[String]("stock_book.name") ~
+      get[String]("stock_broker.name")  map {
+      case id ~ stockName ~ entryDate ~ entryQuote ~ quantity ~ exitDate ~ exitQuote ~ stockBookId ~ stockBrokerId ~ stockBookName ~ stockBrokerName =>
+        TradeLog(id, stockName, entryDate, entryQuote, quantity, exitDate, exitQuote, stockBookId, stockBrokerId, stockBookName, stockBrokerName)
     }
   }
 
   def all(): List[TradeLog] = DB.withConnection { implicit c =>
-    SQL("select * from trade_log").as(tradeLogParser *)
+    SQL("""
+          select * from trade_log tl
+            inner join stock_book sb on tl.stock_book_id=sb.id
+            inner join stock_broker sbr on sbr.id=tl.stock_broker_id
+        """).as(tradeLogParser *)
   }
 
 }

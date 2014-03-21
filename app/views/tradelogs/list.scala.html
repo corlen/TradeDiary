@@ -18,7 +18,9 @@
             <th>Exit Date</th>
             <th>Exit Quote</th>
             <th>Stock Book</th>
+            <th>Stock Book Name</th>
             <th>Stock Broker</th>
+            <th>Stock Broker Name</th>
         </tr>
         </thead>
         @tradeLogs.map { tradeLog =>
@@ -31,7 +33,9 @@
             <td>@tradeLog.exitDate</td>
             <td>@tradeLog.exitQuote</td>
             <td>@tradeLog.stockBookId</td>
+            <td>@tradeLog.stockBookName</td>
             <td>@tradeLog.stockBrokerId</td>
+            <td>@tradeLog.stockBrokerName</td>
         </tr>
         }
     </table>
