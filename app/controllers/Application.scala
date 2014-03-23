@@ -5,13 +5,14 @@ import models.StockBroker
 import models.StockBook
 import models.TradeLog
 import models.Quote
+import models.Report
 
 
 
 object Application extends Controller {
 
   def index = Action {
-    Ok(views.html.index())
+    Ok(views.html.index.render(Report.totalInvested(),Report.totalGrossProfit()))
   }
 
   def stockBooks = Action {
