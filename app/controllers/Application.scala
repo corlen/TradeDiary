@@ -4,6 +4,7 @@ import play.api.mvc._
 import models.StockBroker
 import models.StockBook
 import models.TradeLog
+import models.Quote
 
 
 
@@ -23,6 +24,10 @@ object Application extends Controller {
 
   def tradeLogs = Action {
     Ok(views.html.tradelogs.list(TradeLog.all()))
+  }
+
+  def quotes = Action {
+    Ok(views.html.quotes.list(Quote.all()))
   }
 
 }

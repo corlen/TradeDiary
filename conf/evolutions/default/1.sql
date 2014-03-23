@@ -20,10 +20,18 @@ CREATE TABLE stock_broker
   CONSTRAINT stock_broker_pkey PRIMARY KEY (id)
 );
 
+CREATE TABLE quote
+(
+    code varchar(255) NOT NULL,
+    last_value numeric NOT NUll,
+    last_update date NOT NULL,
+    CONSTRAINT quote_pkey PRIMARY KEY (code)
+);
+
 CREATE TABLE trade_log
 (
    id bigint NOT NULL,
-   stock_name character varying(255) NOT NULL,
+   quote_code varchar(255) NOT NULL,
    entry_date date NOT NULL,
    entry_quote numeric NOT NULL,
    quantity bigint NOT NULL,
@@ -50,11 +58,18 @@ alter table trade_log
     references stock_broker (id)
     on delete restrict on update restrict;
 
+ALTER TABLE trade_log
+    add constraint fk_trade_log_quote_1
+    foreign key (quote_code)
+    references quote (code)
+    on delete restrict on update restrict;
+
 # --- !Downs
 
 drop table if exists stock_book;
 drop table if exists stock_broker;
 drop table if exists trade_log;
+drop table if exists quote;
 
 drop sequence if exists stock_book_sequence;
 drop sequence if exists stock_broker_sequence;

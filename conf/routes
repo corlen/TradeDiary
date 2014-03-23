@@ -15,4 +15,7 @@ GET     /tradelogs                  controllers.Application.tradeLogs
 GET     /stockbooks                 controllers.Application.stockBooks
 
 # Stock Brokers
-GET     /stockbrokers                 controllers.Application.stockBrokers
+GET     /stockbrokers               controllers.Application.stockBrokers
+
+# Quotes
+GET     /quotes                     controllers.Application.quotes

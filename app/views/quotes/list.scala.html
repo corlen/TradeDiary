@@ -1,0 +1,26 @@
+@(quotes: List[Quote])
+
+@import helper._
+
+@main("Quotes") {
+
+    <h1>Quotes</h1>
+
+    <table class="table table-condensed">
+        <thead>
+        <tr>
+            <th>Code</th>
+            <th>Last Update</th>
+            <th>Last Value</th>
+        </tr>
+        </thead>
+        @quotes.map { quote =>
+        <tr>
+            <td>@quote.code</td>
+            <td>@quote.lastUpdate</td>
+            <td>@quote.lastValue</td>
+        </tr>
+        }
+    </table>
+
+}

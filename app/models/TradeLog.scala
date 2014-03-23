@@ -9,7 +9,7 @@ import play.api.Play.current
 
 
 case class TradeLog(id: Pk[Long] = NotAssigned,
-                    stockName: String,
+                    quoteCode: String,
                     entryDate: Date,
                     entryQuote: java.math.BigDecimal,
                     quantity: java.math.BigInteger,
@@ -24,7 +24,7 @@ object TradeLog {
 
   val tradeLogParser = {
       get[Pk[Long]]("trade_log.id") ~
-      get[String]("trade_log.stock_name") ~
+      get[String]("trade_log.quote_code") ~
       get[Date]("trade_log.entry_date") ~
       get[java.math.BigDecimal]("trade_log.entry_quote") ~
       get[java.math.BigInteger]("trade_log.quantity") ~
@@ -34,9 +34,9 @@ object TradeLog {
       get[Long]("trade_log.stock_broker_id") ~
       get[String]("stock_book.name") ~
       get[String]("stock_broker.name")  map {
-      case id ~ stockName ~ entryDate ~ entryQuote ~ quantity ~ exitDate ~ exitQuote ~ stockBookId ~ stockBrokerId ~ stockBookName ~ stockBrokerName =>
-        TradeLog(id, stockName, entryDate, entryQuote, quantity, exitDate, exitQuote, stockBookId, stockBrokerId, stockBookName, stockBrokerName)
-    }
+      case id ~ quoteCode ~ entryDate ~ entryQuote ~ quantity ~ exitDate ~ exitQuote ~ stockBookId ~ stockBrokerId ~ stockBookName ~ stockBrokerName =>
+        TradeLog(id, quoteCode, entryDate, entryQuote, quantity, exitDate, exitQuote, stockBookId, stockBrokerId, stockBookName, stockBrokerName)
+      }
   }
 
   def all(): List[TradeLog] = DB.withConnection { implicit c =>
