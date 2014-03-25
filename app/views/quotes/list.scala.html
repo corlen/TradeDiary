@@ -16,6 +16,7 @@
             <th>Code</th>
             <th>Last Update</th>
             <th>Last Value</th>
+            <th colspan="2">Actions</th>
         </tr>
         </thead>
         @quotes.map { quote =>
@@ -23,6 +24,16 @@
             <td>@quote.code</td>
             <td>@quote.lastUpdate</td>
             <td>@quote.lastValue</td>
+            <td>
+                <div>
+                    <button class="btn btn-default btn-xs" type="button" alt="Edit">
+                        <span class="glyphicon glyphicon-pencil"></span>
+                    </button>
+                    <button class="btn btn-default btn-xs" type="button" alt="Remove">
+                        <span class="glyphicon glyphicon-remove"></span>
+                    </button>
+                </div>
+            </td>
         </tr>
         }
     </table>

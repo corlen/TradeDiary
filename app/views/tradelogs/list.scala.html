@@ -5,12 +5,17 @@
 @main("Trade Logs") {
 
 <table class="table table-condensed">
-    <tr><td><h1>Trade Logs</h1></td>
+    <tr><td><h1>Trade Logs</h1>
+        <div>
+        <button class="btn btn-default btn-sm" type="button" alt="Edit">
+            <span class="glyphicon glyphicon-plus"></span>
+        </button></div>
+        </td>
         <td style="vertical-align: middle; text-align:right;">
             <a href="@routes.Application.index">Back to main menu</a></td></tr>
 </table>
 
-    <table class="table table-condensed">
+    <table class="table table-hover">
         <thead>
         <tr>
             <th>#</th>
@@ -20,11 +25,12 @@
             <th>Quantity</th>
             <th>Exit Date</th>
             <th>Exit Quote</th>
-            <th>Stock Book</th>
-            <th>Stock Book Name</th>
-            <th>Stock Broker</th>
-            <th>Stock Broker Name</th>
+            <th>Book Id</th>
+            <th>Book Name</th>
+            <th>Broker Id</th>
+            <th>Broker Name</th>
             <th>Lot Type</th>
+            <th colspan="2" style="text-align: center">Actions</th>
         </tr>
         </thead>
         @tradeLogs.map { tradeLog =>
@@ -40,7 +46,22 @@
             <td>@tradeLog.stockBookName</td>
             <td>@tradeLog.stockBrokerId</td>
             <td>@tradeLog.stockBrokerName</td>
-            <td>@tradeLog.lotType</td>
+            <td>@if(tradeLog.lotType.equalsIgnoreCase("O")) {
+                    <p>Odd</p>
+                } else {
+                <p>Default</p>
+                }
+            </td>
+            <td>
+                <div>
+                <button class="btn btn-default btn-xs" type="button" alt="Edit">
+                    <span class="glyphicon glyphicon-pencil"></span>
+                </button>
+                <button class="btn btn-default btn-xs" type="button" alt="Remove">
+                    <span class="glyphicon glyphicon-remove"></span>
+                </button>
+                </div>
+            </td>
         </tr>
         }
     </table>
