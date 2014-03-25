@@ -5,7 +5,12 @@
 @main("Stock Books") {
 
 <table class="table table-condensed">
-    <tr><td><h1>Stock Books</h1></td>
+    <tr><td><h1>Stock Books</h1>
+        <div>
+            <button class="btn btn-default btn-sm" type="button" alt="Edit">
+                <span class="glyphicon glyphicon-plus"></span>
+            </button></div>
+    </td>
         <td style="vertical-align: middle; text-align:right;">
             <a href="@routes.Application.index">Back to main menu</a></td></tr>
 </table>
@@ -17,6 +22,7 @@
             <th>Name</th>
             <th>Description</th>
             <th>Color</th>
+            <th colspan="2" style="background-color: #EDE8EB;text-align: center">Actions</th>
         </tr>
         </thead>
         @stockBooks.map { stockBook =>
@@ -25,6 +31,16 @@
             <td>@stockBook.name</td>
             <td>@stockBook.description</td>
             <td>@stockBook.color</td>
+            <td>
+                <div>
+                    <button class="btn btn-default btn-xs" type="button" alt="Edit">
+                        <span class="glyphicon glyphicon-pencil"></span>
+                    </button>
+                    <button class="btn btn-default btn-xs" type="button" alt="Remove">
+                        <span class="glyphicon glyphicon-remove"></span>
+                    </button>
+                </div>
+            </td>
         </tr>
         }
     </table>
