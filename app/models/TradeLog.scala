@@ -18,7 +18,8 @@ case class TradeLog(id: Pk[Long] = NotAssigned,
                     stockBookId: Long,
                     stockBrokerId: Long,
                     stockBookName: String,
-                    stockBrokerName: String)
+                    stockBrokerName: String,
+                    lotType: String)
 
 object TradeLog {
 
@@ -33,9 +34,10 @@ object TradeLog {
       get[Long]("trade_log.stock_book_id") ~
       get[Long]("trade_log.stock_broker_id") ~
       get[String]("stock_book.name") ~
-      get[String]("stock_broker.name")  map {
-      case id ~ quoteCode ~ entryDate ~ entryQuote ~ quantity ~ exitDate ~ exitQuote ~ stockBookId ~ stockBrokerId ~ stockBookName ~ stockBrokerName =>
-        TradeLog(id, quoteCode, entryDate, entryQuote, quantity, exitDate, exitQuote, stockBookId, stockBrokerId, stockBookName, stockBrokerName)
+      get[String]("stock_broker.name") ~
+      get[String]("lot_type") map {
+      case id ~ quoteCode ~ entryDate ~ entryQuote ~ quantity ~ exitDate ~ exitQuote ~ stockBookId ~ stockBrokerId ~ stockBookName ~ stockBrokerName ~ lotType =>
+        TradeLog(id, quoteCode, entryDate, entryQuote, quantity, exitDate, exitQuote, stockBookId, stockBrokerId, stockBookName, stockBrokerName, lotType)
       }
   }
 

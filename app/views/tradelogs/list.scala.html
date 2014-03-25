@@ -24,6 +24,7 @@
             <th>Stock Book Name</th>
             <th>Stock Broker</th>
             <th>Stock Broker Name</th>
+            <th>Lot Type</th>
         </tr>
         </thead>
         @tradeLogs.map { tradeLog =>
@@ -39,6 +40,7 @@
             <td>@tradeLog.stockBookName</td>
             <td>@tradeLog.stockBrokerId</td>
             <td>@tradeLog.stockBrokerName</td>
+            <td>@tradeLog.lotType</td>
         </tr>
         }
     </table>

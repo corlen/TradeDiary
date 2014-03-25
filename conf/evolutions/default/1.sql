@@ -39,6 +39,7 @@ CREATE TABLE trade_log
    exit_quote numeric,
    stock_book_id bigint NOT NULL,
    stock_broker_id bigint NOT NULL,
+   lot_type varchar(1),
    CONSTRAINT trade_log_pkey PRIMARY KEY (id)
 );
 
