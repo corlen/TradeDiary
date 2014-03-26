@@ -13,6 +13,7 @@ GET     /tradelogs                  controllers.Application.tradeLogs
 
 # Stock Books
 GET     /stockbooks                 controllers.Application.stockBooks
+POST    /stockbooks                 controllers.Application.newStockBook
 
 # Stock Brokers
 GET     /stockbrokers               controllers.Application.stockBrokers
