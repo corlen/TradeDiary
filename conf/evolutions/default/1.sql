@@ -43,9 +43,9 @@ CREATE TABLE trade_log
    CONSTRAINT trade_log_pkey PRIMARY KEY (id)
 );
 
-CREATE SEQUENCE stock_book_sequence start with 1 increment 1  NO MAXVALUE CACHE 1;
-CREATE SEQUENCE stock_broker_sequence start with 1 increment 1  NO MAXVALUE CACHE 1;
-CREATE SEQUENCE trade_log_sequence start with 1 increment 1  NO MAXVALUE CACHE 1;
+CREATE SEQUENCE stock_book_sequence start with 1;
+CREATE SEQUENCE stock_broker_sequence start with 1;
+CREATE SEQUENCE trade_log_sequence start with 1;
 
 alter table trade_log
     add constraint fk_trade_log_stock_book_1

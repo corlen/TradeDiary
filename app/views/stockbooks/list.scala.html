@@ -1,7 +1,6 @@
-@(stockBooks: List[StockBook], stockBookForm: Form[StockBook])
+@(stockBooks: List[StockBook])
 
-@import helper.twitterBootstrap._
-@import play.api.data.FormError
+@import helper._
 
 @main("Stock Books") {
 
@@ -11,28 +10,10 @@
             <button class="btn btn-default btn-sm" type="button" alt="Edit">
                 <span class="glyphicon glyphicon-plus"></span>
             </button></div>
-
-        @helper.form(action = routes.Application.newStockBook()) {
-            @helper.inputText(stockBookForm("Book Name"), 'placeholder -> "Book Name", 'id -> "Name")
-            @helper.inputText(stockBookForm("Description"))
-            @helper.inputText(stockBookForm("Color"))
-            <input type="submit" value="Create">
-        }
-
-
     </td>
         <td style="vertical-align: middle; text-align:right;">
             <a href="@routes.Application.index">Back to main menu</a></td></tr>
 </table>
-
-    @if(stockBookForm.hasErrors) {
-    <div class="alert alert-error">
-        <a class="close" data-dismiss="alert">x</a>
-            @if(stockBookForm.errors.size > 0) {
-                <p>@stockBookForm.errors.mkString(", ")</p>
-            }
-    </div>
-    }
 
     <table class="table table-condensed">
         <thead>
