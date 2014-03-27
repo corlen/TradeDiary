@@ -9,3 +9,10 @@ A webapp to log my stock trades and make trade simulations
 
 * Postgres 9.3.3
 
+TODO:
+
+* Add, edit and delete of a trade log
+
+* Create more reports to index page
+
+* Adding a trade simulator made with jQuery
