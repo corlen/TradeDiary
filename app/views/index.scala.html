@@ -1,5 +1,3 @@
-@(totalInvested: java.math.BigDecimal, totalGrossProfit: java.math.BigDecimal)
-
 @main(title = "Trade Diary Main Page") {
 
 <h1>Trade Diary</h1>
@@ -8,15 +6,15 @@
         <ul>
             <li><a href="@routes.Application.stockBooks">Stock Books</a></li>
             <li><a href="@routes.Application.stockBrokers">Stock Brokers</a></li>
-            <li><a href="@routes.Application.quotes">Stock Quotes</a></li>
-            <li><a href="@routes.Application.tradeLogs">Trade Logs</a></li>
+            <li><a href="@routes.QuoteController.quotes">Stock Quotes</a></li>
+            <li><a href="@routes.TradeLogController.tradeLogs">Trade Logs</a></li>
         </ul>
 <br>
 <h3>Reports:</h3>
 <br>
 <table class="table table-bordered table-hover">
-    <tr><td>Total Invested: </td><td>@totalInvested</td></tr>
-    <tr><td>Total Gross Profit:</td><td>@totalGrossProfit</td></tr>
+    <tr><td>Total Invested: </td><td>@Report.totalInvested</td></tr>
+    <tr><td>Total Gross Profit:</td><td>@Report.totalGrossProfit</td></tr>
 </table>
 
 

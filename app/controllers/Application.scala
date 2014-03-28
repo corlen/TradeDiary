@@ -4,15 +4,12 @@ import play.api.mvc._
 import models.StockBroker
 import models.StockBook
 import models.TradeLog
-import models.Quote
-import models.Report
-
 
 
 object Application extends Controller {
 
   def index = Action {
-    Ok(views.html.index.render(Report.totalInvested(),Report.totalGrossProfit()))
+    Ok(views.html.index.render())
   }
 
   def stockBooks = Action {
@@ -21,14 +18,6 @@ object Application extends Controller {
 
   def stockBrokers = Action {
     Ok(views.html.stockbrokers.list(StockBroker.all()))
-  }
-
-  def tradeLogs = Action {
-    Ok(views.html.tradelogs.list(TradeLog.all()))
-  }
-
-  def quotes = Action {
-    Ok(views.html.quotes.list(Quote.all()))
   }
 
 }
