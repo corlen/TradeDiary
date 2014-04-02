@@ -6,12 +6,13 @@ import anorm.SqlParser._
 import play.api.db.DB
 import anorm.~
 import play.api.Play.current
+import java.math.BigDecimal
 
 
 
 
 case class Quote(code: Pk[String],
-                 lastValue: java.math.BigDecimal,
+                 lastValue: BigDecimal,
                  lastUpdate: Date)
 
 object Quote {

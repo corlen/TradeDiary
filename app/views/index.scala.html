@@ -16,6 +16,32 @@
     <tr><td>Total Invested: </td><td>@Report.totalInvested</td></tr>
     <tr><td>Total Gross Profit:</td><td>@Report.totalGrossProfit</td></tr>
 </table>
+<br>
+<table class="table table-bordered">
+    <tr><th colspan="7" class="text-center th_index_summary_by_stock">Summary by Stock</th></tr>
+
+    <tr>
+        <th>Stock</th>
+        <th>Total Quotes</th>
+        <th>Invested Value</th>
+        <th>Present Gross Value</th>
+        <th>Higher Quote Bought</th>
+        <th>Lower Quote Bought</th>
+        <th>Oldest Trade</th>
+    </tr>
+    @Report.summaryReportByStock.map { summary =>
+    <tr>
+        <td>@summary.code</td>
+        <td>@summary.totalQuotes</td>
+        <td>@summary.investedValue</td>
+        <td @if(summary.presentGrossValue.compareTo(summary.investedValue) == -1 ) { class="danger" }>@summary.presentGrossValue</td>
+        <td>@summary.higherQuoteBought</td>
+        <td>@summary.lowerQuoteBought</td>
+        <td>@{summary.oldestTradeDate format("dd/MM/yyyy")}</td>
+    </tr>
+    }
+</table>
+
 
 
 }
