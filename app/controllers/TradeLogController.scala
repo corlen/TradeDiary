@@ -9,4 +9,8 @@ object TradeLogController extends Controller{
     Ok(views.html.tradelogs.list(TradeLog.all()))
   }
 
+  def tradeLogDetail(id: Long) = Action {
+    Ok(views.html.tradelogs.detail(TradeLog.findById(id)))
+  }
+
 }

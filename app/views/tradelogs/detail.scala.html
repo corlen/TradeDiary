@@ -1,0 +1,81 @@
+@(tradeLog: Option[TradeLog])
+
+@import helper._
+
+@main("Trade Log Detail") {
+
+<table class="table table-condensed">
+    <tr><td><h1>Trade Log Detail</h1></td>
+        <td style="vertical-align: middle; text-align:right;">
+            <a href="@routes.Application.index">Back to main menu</a></td></tr>
+</table>
+    @tradeLog.map { tradeLog =>
+    <table class="table table-bordered table-condensed">
+        <tr>
+            <th class="th_trade_log_detail">#</th>
+            <td>@tradeLog.id</td>
+        </tr>
+        <tr>
+            <th class="th_trade_log_detail">Stock</th>
+            <td>@tradeLog.quoteCode</td>
+        </tr>
+        <tr>
+            <th class="th_trade_log_detail">Entry Date</th>
+            <td>@tradeLog.entryDate</td>
+        </tr>
+        <tr>
+            <th class="th_trade_log_detail">Entry Quote</th>
+            <td>@tradeLog.entryQuote</td>
+        </tr>
+        <tr>
+            <th class="th_trade_log_detail">Quantity</th>
+            <td>@tradeLog.quantity</td>
+        </tr>
+        <tr>
+            <th class="th_trade_log_detail">Exit Date</th>
+            <td>@tradeLog.exitDate</td>
+        </tr>
+        <tr>
+            <th class="th_trade_log_detail">Exit Quote</th>
+            <td>@tradeLog.exitQuote</td>
+        </tr>
+        <tr>
+            <th class="th_trade_log_detail">Book Id</th>
+            <td>@tradeLog.stockBookId</td>
+        </tr>
+        <tr>
+            <th class="th_trade_log_detail">Book Name</th>
+            <td>@tradeLog.stockBookName</td>
+        </tr>
+        <tr>
+            <th class="th_trade_log_detail">Broker Id</th>
+            <td>@tradeLog.stockBrokerId</td>
+        </tr>
+        <tr>
+            <th class="th_trade_log_detail">Broker Name</th>
+            <td>@tradeLog.stockBrokerName</td>
+        </tr>
+        <tr>
+            <th class="th_trade_log_detail">Lot Type</th>
+            <td>@if(tradeLog.lotType == "O") {
+                <p>Odd</p>
+                } else {
+                <p>Default</p>
+                }
+            </td>
+        </tr>
+        <tr>
+            <th class="th_trade_log_detail">Duration</th>
+            <td></td>
+        </tr>
+        <tr>
+            <th class="th_trade_log_detail">Total Invested</th>
+            <td>@(tradeLog.entryQuote.multiply(new java.math.BigDecimal(tradeLog.quantity)))</td>
+        </tr>
+        <tr>
+            <th class="th_trade_log_detail">Estimated Gross Profit</th>
+            <td></td>
+        </tr>
+    </table>
+    }
+}

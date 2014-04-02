@@ -41,12 +41,21 @@ object TradeLog {
       }
   }
 
-  def all(): List[TradeLog] = DB.withConnection { implicit c =>
+  def all(): List[TradeLog] = DB.withConnection { implicit connection =>
     SQL("""
           select * from trade_log tl
             inner join stock_book sb on tl.stock_book_id=sb.id
             inner join stock_broker sbr on sbr.id=tl.stock_broker_id
         """).as(tradeLogParser *)
+  }
+
+  def findById(id: Long): Option[TradeLog] = DB.withConnection { implicit connection =>
+    SQL("""
+          select * from trade_log tl
+            inner join stock_book sb on tl.stock_book_id=sb.id
+            inner join stock_broker sbr on sbr.id=tl.stock_broker_id
+            where tl.id = {id}
+        """).on('id -> id).as(TradeLog.tradeLogParser.singleOpt)
   }
 
 }
