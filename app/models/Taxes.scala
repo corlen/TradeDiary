@@ -1,10 +1,11 @@
 package models
 
-import java.math.BigDecimal
+import scala.math.BigDecimal
+import scala.math.BigDecimal.RoundingMode
 
 object Taxes {
 
-    def definingBigDecimal(number: Double) = new BigDecimal(number).setScale(6, BigDecimal.ROUND_DOWN)
+    def definingBigDecimal(number: Double) = new BigDecimal(new java.math.BigDecimal(number)).setScale(6, RoundingMode.HALF_DOWN)
 
     def emolumentOnBuying = definingBigDecimal(0.00005)
 

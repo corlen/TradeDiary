@@ -32,7 +32,7 @@
         <td>@summary.code</td>
         <td>@summary.totalQuotes</td>
         <td>@summary.investedValue</td>
-        <td @if(summary.presentGrossValue.compareTo(summary.investedValue) == -1 ) { class="danger" }>@summary.presentGrossValue</td>
+        <td @if(summary.presentGrossValue < summary.investedValue) { class="danger" }>@summary.presentGrossValue</td>
         <td>@summary.higherQuoteBought</td>
         <td>@summary.lowerQuoteBought</td>
         <td>@{summary.oldestTradeDate format("dd/MM/yyyy")}</td>

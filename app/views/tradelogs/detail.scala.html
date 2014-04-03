@@ -1,7 +1,7 @@
 @(tradeLog: Option[TradeLog])
 
 @import helper._
-@import java.math.BigDecimal
+@import scala.math.BigDecimal
 
 @main("Trade Log Detail") {
 
@@ -71,7 +71,7 @@
         </tr>
         <tr>
             <th class="th_trade_log_detail">Total Invested</th>
-            <td>@(tradeLog.entryQuote.multiply(new BigDecimal(tradeLog.quantity)))</td>
+            <td>@(tradeLog.entryQuote * BigDecimal(tradeLog.quantity))</td>
         </tr>
         <tr>
             <th class="th_trade_log_detail">Estimated Gross Profit</th>

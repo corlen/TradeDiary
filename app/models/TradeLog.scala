@@ -6,15 +6,18 @@ import anorm.SqlParser._
 import play.api.db.DB
 import anorm.~
 import play.api.Play.current
+import scala.math.BigDecimal
+import scala.math.BigInt
+
 
 
 case class TradeLog(id: Pk[Long] = NotAssigned,
                     quoteCode: String,
                     entryDate: Date,
-                    entryQuote: java.math.BigDecimal,
-                    quantity: java.math.BigInteger,
+                    entryQuote: BigDecimal,
+                    quantity: BigInt,
                     exitDate: Option[Date],
-                    exitQuote: Option[java.math.BigDecimal],
+                    exitQuote: Option[java.math.BigDecimal],      //TODO: isso aqui vai dar problema na hora de criar o form
                     stockBookId: Long,
                     stockBrokerId: Long,
                     stockBookName: String,
@@ -37,7 +40,7 @@ object TradeLog {
       get[String]("stock_broker.name") ~
       get[String]("lot_type") map {
       case id ~ quoteCode ~ entryDate ~ entryQuote ~ quantity ~ exitDate ~ exitQuote ~ stockBookId ~ stockBrokerId ~ stockBookName ~ stockBrokerName ~ lotType =>
-        TradeLog(id, quoteCode, entryDate, entryQuote, quantity, exitDate, exitQuote, stockBookId, stockBrokerId, stockBookName, stockBrokerName, lotType)
+        TradeLog(id, quoteCode, entryDate, BigDecimal(entryQuote), BigInt(quantity), exitDate, exitQuote, stockBookId, stockBrokerId, stockBookName, stockBrokerName, lotType)
       }
   }
 

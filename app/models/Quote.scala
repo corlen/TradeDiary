@@ -6,7 +6,7 @@ import anorm.SqlParser._
 import play.api.db.DB
 import anorm.~
 import play.api.Play.current
-import java.math.BigDecimal
+import scala.math.BigDecimal
 
 
 
@@ -22,7 +22,7 @@ object Quote {
     get[java.math.BigDecimal]("quote.last_value") ~
     get[Date]("quote.last_update") map {
     case code ~ lastValue ~ lastUpdate =>
-        Quote(code, lastValue, lastUpdate)
+        Quote(code, BigDecimal(lastValue), lastUpdate)
     }
   }
 

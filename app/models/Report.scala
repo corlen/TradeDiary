@@ -5,7 +5,7 @@ import anorm._
 import anorm.SqlParser._
 import play.api.db.DB
 import play.api.Play.current
-import java.math.BigDecimal
+import scala.math.BigDecimal
 import java.util.Date
 
 case class SummaryReportByStock(code: String,
@@ -19,12 +19,12 @@ case class QuickQuote(code: String, lastValue: BigDecimal)
 
 object Report {
 
-  def totalInvested(): BigDecimal = DB.withConnection { implicit connection =>
+  def totalInvested(): java.math.BigDecimal = DB.withConnection { implicit connection =>
                       SQL("select sum(entry_quote*quantity) from trade_log")
                       .as(scalar[java.math.BigDecimal].single)
   }
 
-  def totalGrossProfit(): BigDecimal = DB.withConnection { implicit connection =>
+  def totalGrossProfit(): java.math.BigDecimal = DB.withConnection { implicit connection =>
     SQL("select sum(a.quantity*b.last_value)-sum(a.entry_quote*a.quantity) from trade_log a inner join quote b on a.quote_code=b.code")
     .as(scalar[java.math.BigDecimal].single)
 
@@ -32,14 +32,14 @@ object Report {
 
   val summaryReportByStockParser = {
     get[String]("quote.code") ~
-    get[BigDecimal]("total_quotes") ~
-    get[BigDecimal]("invested_value") ~
-    get[BigDecimal]("present_gross_value") ~
-    get[BigDecimal]("higher_quote_bought") ~
-    get[BigDecimal]("lower_quote_bought") ~
+    get[java.math.BigDecimal]("total_quotes") ~
+    get[java.math.BigDecimal]("invested_value") ~
+    get[java.math.BigDecimal]("present_gross_value") ~
+    get[java.math.BigDecimal]("higher_quote_bought") ~
+    get[java.math.BigDecimal]("lower_quote_bought") ~
     get[Date]("oldest_trade") map {
       case code ~ totalQuotes ~ investedValue ~ presentGrossValue ~ higherQuoteBought ~ lowerQuoteBought ~ oldestTradeDate =>
-        SummaryReportByStock(code, totalQuotes, investedValue, presentGrossValue, higherQuoteBought, lowerQuoteBought, oldestTradeDate)
+        SummaryReportByStock(code, BigDecimal(totalQuotes), BigDecimal(investedValue), BigDecimal(presentGrossValue), BigDecimal(higherQuoteBought), BigDecimal(lowerQuoteBought), oldestTradeDate)
     }
   }
 
@@ -62,7 +62,7 @@ object Report {
 
   val quickQuoteParser = {
     get[String]("code") ~
-    get[BigDecimal]("last_value") map {
+    get[java.math.BigDecimal]("last_value") map {
       case code ~ lastValue => QuickQuote(code, lastValue)
     }
   }
