@@ -3,9 +3,12 @@
 @import helper._
 
 @main("Stock Books") {
+<script>
+    $("#li_stock_books").addClass("active");
+</script>
 
 <table class="table table-condensed">
-    <tr><td><h1>Stock Books</h1>
+    <tr><td><h3>Stock Books</h3>
     </td>
         <td style="vertical-align: middle; text-align:right;">
             <a href="@routes.Application.index">Back to main menu</a></td></tr>

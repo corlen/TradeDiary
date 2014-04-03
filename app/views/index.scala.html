@@ -1,30 +1,21 @@
 @main(title = "Trade Diary Main Page") {
-
-<h2>Trade Diary</h2>
-
-<h3>Menu:</h3>
-        <ul>
-            <li><a href="@routes.Application.stockBooks">Stock Books</a></li>
-            <li><a href="@routes.Application.stockBrokers">Stock Brokers</a></li>
-            <li><a href="@routes.QuoteController.quotes">Stock Quotes</a></li>
-            <li><a href="@routes.TradeLogController.tradeLogs">Trade Logs</a></li>
-        </ul>
-<br>
+<script>
+    $("#header_trade_diary").addClass("active");
+</script>
 <div id="quick_quote_div">
     <table class="table table-bordered table_quick_quote">
-        <tr><th colspan="2" class="th_quick_quote">Quick Quote</th></tr>
+        <tr><th colspan="2" class="text-center th_quick_quote">Quick Quote</th></tr>
         @Report.quickQuote.map { quickQuote =>
         <tr><td>@quickQuote.code</td><td>@quickQuote.lastValue</td></tr>
         }
     </table>
 </div>
-<h3>Reports:</h3>
-<table class="table table-bordered table-hover table_reports">
+<table class="table table-bordered table-hover table_quick_reports">
     <tr><th>Total Invested: </th><td>@Report.totalInvested</td></tr>
     <tr><th>Total Gross Profit:</th><td>@Report.totalGrossProfit</td></tr>
 </table>
 <br>
-<table class="table table-bordered">
+<table class="table table-bordered table_reports">
     <tr><th colspan="7" class="text-center th_index_summary_by_stock">Summary by Stock</th></tr>
 
     <tr>

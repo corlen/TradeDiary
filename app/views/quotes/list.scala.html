@@ -3,9 +3,12 @@
 @import helper._
 
 @main("Quotes") {
+    <script>
+    $("#li_quotes").addClass("active");
+    </script>
 
     <table class="table table-condensed">
-        <tr><td><h1>Quotes</h1></td>
+        <tr><td><h3>Quotes</h3></td>
             <td style="vertical-align: middle; text-align:right;">
                 <a href="@routes.Application.index">Back to main menu</a></td></tr>
     </table>
