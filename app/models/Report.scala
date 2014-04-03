@@ -15,6 +15,7 @@ case class SummaryReportByStock(code: String,
                                 higherQuoteBought: BigDecimal,
                                 lowerQuoteBought: BigDecimal,
                                 oldestTradeDate: Date)
+case class QuickQuote(code: String, lastValue: BigDecimal)
 
 object Report {
 
@@ -59,4 +60,18 @@ object Report {
       """).as(summaryReportByStockParser *)
   }
 
+  val quickQuoteParser = {
+    get[String]("code") ~
+    get[BigDecimal]("last_value") map {
+      case code ~ lastValue => QuickQuote(code, lastValue)
+    }
+  }
+
+  def quickQuote(): List[QuickQuote] = DB.withConnection { implicit connection =>
+    SQL(
+      """
+         select code, last_value from quote order by quote
+      """).as(quickQuoteParser *)
+
+  }
 }

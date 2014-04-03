@@ -6,3 +6,23 @@
 .th_index_summary_by_stock {
     background-color:#DCDCDC;
 }
+
+.table_quick_quote {
+    width:150px;
+}
+
+.th_quick_quote {
+    background-color:#DCDCDC;
+}
+
+#quick_quote_div {
+    width:150px;
+    position:absolute;
+    top:40px;
+    right:0;
+    z-index:-1;
+}
+
+.table_reports {
+    width:300px;
+}

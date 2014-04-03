@@ -1,6 +1,6 @@
 @main(title = "Trade Diary Main Page") {
 
-<h1>Trade Diary</h1>
+<h2>Trade Diary</h2>
 
 <h3>Menu:</h3>
         <ul>
@@ -10,11 +10,18 @@
             <li><a href="@routes.TradeLogController.tradeLogs">Trade Logs</a></li>
         </ul>
 <br>
+<div id="quick_quote_div">
+    <table class="table table-bordered table_quick_quote">
+        <tr><th colspan="2" class="th_quick_quote">Quick Quote</th></tr>
+        @Report.quickQuote.map { quickQuote =>
+        <tr><td>@quickQuote.code</td><td>@quickQuote.lastValue</td></tr>
+        }
+    </table>
+</div>
 <h3>Reports:</h3>
-<br>
-<table class="table table-bordered table-hover">
-    <tr><td>Total Invested: </td><td>@Report.totalInvested</td></tr>
-    <tr><td>Total Gross Profit:</td><td>@Report.totalGrossProfit</td></tr>
+<table class="table table-bordered table-hover table_reports">
+    <tr><th>Total Invested: </th><td>@Report.totalInvested</td></tr>
+    <tr><th>Total Gross Profit:</th><td>@Report.totalGrossProfit</td></tr>
 </table>
 <br>
 <table class="table table-bordered">
