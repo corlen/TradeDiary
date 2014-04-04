@@ -20,3 +20,4 @@ GET     /stockbrokers               controllers.Application.stockBrokers
 
 # Quotes
 GET     /quotes                     controllers.QuoteController.quotes
+GET     /quotes/:code               controllers.QuoteController.updateQuote(code: String)

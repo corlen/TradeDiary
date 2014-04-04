@@ -3,7 +3,6 @@ package controllers
 import play.api.mvc._
 import models.StockBroker
 import models.StockBook
-import models.TradeLog
 
 
 object Application extends Controller {

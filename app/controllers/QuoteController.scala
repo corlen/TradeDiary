@@ -10,4 +10,9 @@ object QuoteController extends Controller{
     Ok(views.html.quotes.list(Quote.all()))
   }
 
+  def updateQuote(code: String) = Action {
+    Quote.updateQuote(code)
+    Redirect(routes.QuoteController.quotes)
+  }
+
 }
