@@ -12,6 +12,7 @@ case class SummaryReportByStock(code: String,
                                 totalQuotes: BigDecimal,
                                 investedValue: BigDecimal,
                                 presentGrossValue: BigDecimal,
+                                grossProfit: BigDecimal,
                                 higherQuoteBought: BigDecimal,
                                 lowerQuoteBought: BigDecimal,
                                 oldestTradeDate: Date)
@@ -35,11 +36,12 @@ object Report {
     get[java.math.BigDecimal]("total_quotes") ~
     get[java.math.BigDecimal]("invested_value") ~
     get[java.math.BigDecimal]("present_gross_value") ~
+    get[java.math.BigDecimal]("gross_profit") ~
     get[java.math.BigDecimal]("higher_quote_bought") ~
     get[java.math.BigDecimal]("lower_quote_bought") ~
     get[Date]("oldest_trade") map {
-      case code ~ totalQuotes ~ investedValue ~ presentGrossValue ~ higherQuoteBought ~ lowerQuoteBought ~ oldestTradeDate =>
-        SummaryReportByStock(code, BigDecimal(totalQuotes), BigDecimal(investedValue), BigDecimal(presentGrossValue), BigDecimal(higherQuoteBought), BigDecimal(lowerQuoteBought), oldestTradeDate)
+      case code ~ totalQuotes ~ investedValue ~ presentGrossValue ~ grossProfit ~ higherQuoteBought ~ lowerQuoteBought ~ oldestTradeDate =>
+        SummaryReportByStock(code, BigDecimal(totalQuotes), BigDecimal(investedValue), BigDecimal(presentGrossValue), BigDecimal(grossProfit), BigDecimal(higherQuoteBought), BigDecimal(lowerQuoteBought), oldestTradeDate)
     }
   }
 
@@ -51,6 +53,7 @@ object Report {
         sum(trade_log.quantity) as total_quotes,
         sum(trade_log.quantity*trade_log.entry_quote) as invested_value,
         sum(quote.last_value*trade_log.quantity) as present_gross_value,
+        (sum(quote.last_value*trade_log.quantity)-sum(trade_log.quantity*trade_log.entry_quote)) as gross_profit,
         max(trade_log.entry_quote) as higher_quote_bought,
         min(trade_log.entry_quote) as lower_quote_bought,
         min(trade_log.entry_date) as oldest_trade

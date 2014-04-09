@@ -16,13 +16,14 @@
 </table>
 <br>
 <table class="table table-bordered table_reports">
-    <tr><th colspan="7" class="text-center th_index_summary_by_stock">Summary by Stock</th></tr>
+    <tr><th colspan="8" class="text-center th_index_summary_by_stock">Summary by Stock</th></tr>
 
     <tr>
         <th>Stock</th>
         <th>Total Quotes</th>
         <th>Invested Value</th>
         <th>Present Gross Value</th>
+        <th>Gross Profit</th>
         <th>Higher Quote Bought</th>
         <th>Lower Quote Bought</th>
         <th>Oldest Trade</th>
@@ -32,7 +33,8 @@
         <td>@summary.code</td>
         <td>@summary.totalQuotes</td>
         <td>@summary.investedValue</td>
-        <td class=@if(summary.presentGrossValue < summary.investedValue) { "danger" } else { "success" }>@summary.presentGrossValue</td>
+        <td>@summary.presentGrossValue</td>
+        <td class=@if(summary.presentGrossValue < summary.investedValue) { "danger" } else { "success" }>@summary.grossProfit</td>
         <td>@summary.higherQuoteBought</td>
         <td>@summary.lowerQuoteBought</td>
         <td>@{summary.oldestTradeDate format("dd/MM/yyyy")}</td>
