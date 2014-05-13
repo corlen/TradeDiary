@@ -18,3 +18,5 @@ TODO:
 * Adding a trade simulator made with jQuery
 
 * Change persistence to MongoDB 
+
+* Add Akka Actors to update quotes 
