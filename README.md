@@ -16,3 +16,5 @@ TODO:
 * Create more reports to index page
 
 * Adding a trade simulator made with jQuery
+
+* Change persistence to MongoDB 
