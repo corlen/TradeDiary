@@ -20,3 +20,5 @@ TODO:
 * Change persistence to MongoDB 
 
 * Add Akka Actors to update quotes 
+
+* Add a initial import of trades (I don't know the format yet)
