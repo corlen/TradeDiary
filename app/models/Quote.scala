@@ -46,7 +46,6 @@ object Quote {
     }
 
     for (quote <- quotes) {
-      println(new SimpleDateFormat("d/MM/yyyy").parse(quote.lastDate.substring(0,10)))
       DB.withConnection { implicit c =>
         SQL("Update quote set last_value = {lastValue}, last_update = {lastUpdate} where code = {code}").on(
           'lastValue -> new java.math.BigDecimal(quote.lastValue.replace(",",".")),
