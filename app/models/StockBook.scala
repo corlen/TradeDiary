@@ -4,7 +4,7 @@ import anorm._
 import anorm.SqlParser._
 import play.api.db._
 import play.api.Play.current
-
+//http://stackoverflow.com/questions/24192229/how-to-handle-anorms-pk-deprecation
 case class StockBook(
                       id: Pk[Long] = NotAssigned,
                       name: String,
