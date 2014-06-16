@@ -17,7 +17,7 @@ case class TradeLog(id: Pk[Long] = NotAssigned,
                     entryQuote: BigDecimal,
                     quantity: BigInt,
                     exitDate: Option[Date],
-                    exitQuote: Option[java.math.BigDecimal],      //TODO: isso aqui vai dar problema na hora de criar o form
+                    exitQuote: Option[BigDecimal],
                     stockBookId: Long,
                     stockBrokerId: Long,
                     stockBookName: String,
@@ -30,17 +30,17 @@ object TradeLog {
       get[Pk[Long]]("trade_log.id") ~
       get[String]("trade_log.quote_code") ~
       get[Date]("trade_log.entry_date") ~
-      get[java.math.BigDecimal]("trade_log.entry_quote") ~
-      get[java.math.BigInteger]("trade_log.quantity") ~
+      get[BigDecimal]("trade_log.entry_quote") ~
+      get[BigInt]("trade_log.quantity") ~
       get[Option[Date]]("trade_log.exit_date") ~
-      get[Option[java.math.BigDecimal]]("trade_log.exit_quote") ~
+      get[Option[BigDecimal]]("trade_log.exit_quote") ~
       get[Long]("trade_log.stock_book_id") ~
       get[Long]("trade_log.stock_broker_id") ~
       get[String]("stock_book.name") ~
       get[String]("stock_broker.name") ~
       get[String]("lot_type") map {
       case id ~ quoteCode ~ entryDate ~ entryQuote ~ quantity ~ exitDate ~ exitQuote ~ stockBookId ~ stockBrokerId ~ stockBookName ~ stockBrokerName ~ lotType =>
-        TradeLog(id, quoteCode, entryDate, BigDecimal(entryQuote), BigInt(quantity), exitDate, exitQuote, stockBookId, stockBrokerId, stockBookName, stockBrokerName, lotType)
+        TradeLog(id, quoteCode, entryDate, entryQuote, quantity, exitDate, exitQuote, stockBookId, stockBrokerId, stockBookName, stockBrokerName, lotType)
       }
   }
 
