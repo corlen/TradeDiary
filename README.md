@@ -3,9 +3,9 @@ Trade Diary
 
 A webapp to log my stock trades and make trade simulations
 
-* Scala 2.10.3
+* Scala 2.11.1
 
-* Play 2.2.2
+* Play 2.3.0
 
 * Postgres 9.3.3
 
